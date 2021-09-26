@@ -1,8 +1,8 @@
 # No Man Space Game
 1. Define required constants
 
-    *const_wrongGuessLimit (No. of total wrong guesses before you lose the game, 6 or 7)
-
+    * const_wrongGuessLimit (No. of total wrong guesses before you lose the game, 6 or 7)
+    * const_initialWordBank
 
 2. Define required variables used to track the state of the game
 
@@ -42,7 +42,7 @@
             > animate the astronut to go up one level
             > re-render all the messages to the page
             > if the limit is reached, present a game over message 
-            
+
     * else the letter is included in the word, add the letter to correctGuesses array
         > figure out the position of the letter of the correct guess 
         > re-render the letter in the UI that fills the space out
@@ -56,4 +56,60 @@
 
 
 # Function definitions:
+
+function checkGuess
+    > check if current word contains letter
+    > if yes,
+        > add letter to correctGuesses 
+        > call render
+    > if no,
+        > add letter to wrongGuesses
+        > call render
+
+function chooseWord 
+    > select difficulty rating by using winCount
+    > filter wordBank by the rating
+    > select random word from what's left
+    > set the current word variable
+    > call render function
+
+function resetGame
+    > clear wrongGuesses
+    > clear wordBank
+    > set wordBank to inital wordBank
+    > clear correctGuesses
+    > clear currentWord
+    > call render function
+
+function render
+    > ALLLLLLLLLLLL the elements ******************* double check
+    * the form for useer input
+    * reset button
+    * game character illustration
+    * the message telling the user how many letters in the word
+    * the message telling the user how many guesses they have left
+    * the wrong guesses list (message)
+    * call animateCharacter
+
+function looseGame
+    > call reset game
+    > present loosing message
+
+function animateCharacter
+    > animate the character up according to the wrongGuesses array
+
+function winGame
+    > call reset game
+    > present winning message
+
+function completeWord
+    > remove currentWord from wordBank
+    > check if the wordBank is empty
+        > if empty,
+            > call winGame
+        else, 
+            > clear wrongGuesses
+            > clear correctGuesses
+            > clear correctWord
+            > call chooseWord
 
