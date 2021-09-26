@@ -18,21 +18,27 @@ let winCount = 0;
 /*----- cached element references -----*/
 
 const form  = document.getElementById('guessForm');
+const hintMsg = document.getElementById('hint-msg');
+const resetBtn = document.getElementById('reset-btn');
+const remainingMsg = document.getElementById('remaining-msg');
+const wrongMsg = document.getElementById('wrong-msg');
 
-chooseWord()
 
 
 /*----- event listeners -----*/
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    let guess = event.target.elements['guess'].value
+    let guess = event.target.elements['guess'].value.toLowerCase()
     checkGuess(guess)
     $( ".letters-cont" ).append( "<div class='letter-box'> <p>"+guess +"</p></div>" );
     // handle the form data
 });
 
 
+/*----- start the app -----*/
+chooseWord();
+render();
 
 /*----- functions -----*/
 
@@ -46,7 +52,7 @@ form.addEventListener('submit', (event) => {
 function chooseWord() {
     let difficulty = 3 + winCount;
     let filteredWords = wordBank.filter(word => word.length == difficulty);
-    currentWord = filteredWords[Math.floor(Math.random()*filteredWords.length)];
+    currentWord = filteredWords[Math.floor(Math.random()*filteredWords.length)].toLowerCase();
     console.log(currentWord)
     //call render
 }
@@ -69,9 +75,9 @@ function checkGuess(guess) {
 //*****************/
 
 function render() {
-    
-
-
+    hintMsg.innerHTML = `The word has ${currentWord.length} letters.`;
+    remainingMsg.innerHTML = `You have ${wrongGuessLimit - wrongGuesses.length} guesses left!`
+    wrongMsg.innerHTML = `Wrong guesses ${wrongGuesses.toString()}`
 }
 
 
