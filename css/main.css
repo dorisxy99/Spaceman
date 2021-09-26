@@ -1,0 +1,20 @@
+h1 {
+    text-align: center;
+}
+
+.letters-cont, .input-cont{
+    text-align: center;
+    margin: auto;
+    padding-top: 30px;
+}
+
+.letter-box {
+    border-bottom: 2px solid black;
+    padding: 15px;
+    font-size: 35px;
+    display: inline-flex;
+}
+
+.letter-box p{
+    margin: 0;
+}
