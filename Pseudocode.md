@@ -54,12 +54,11 @@
                 * run a function to select a new word 
                 * increment the winCount by 1
                 * re-set some of the UI messages
-
-
-
+                
 ## Function definitions:
 
-####function checkGuess
+#### function checkGuess
+
     * check if current word contains letter
     * if yes,
         * add letter to correctGuesses 
@@ -68,14 +67,14 @@
         * add letter to wrongGuesses
         * call render
 
-####function chooseWord 
+#### function chooseWord 
     * select difficulty rating by using winCount
     * filter wordBank by the rating
     * select random word from what's left
     * set the current word variable
     * call render function
 
-####function resetGame
+#### function resetGame
     * clear wrongGuesses
     * clear wordBank
     * set wordBank to inital wordBank
@@ -83,7 +82,7 @@
     * clear currentWord
     * call render function
 
-####function render
+#### function render
     * ALLLLLLLLLLLL the elements ******************* double check
     * the form for useer input
     * reset button
@@ -93,18 +92,18 @@
     * the wrong guesses list (message)
     * call animateCharacter
 
-####function looseGame
+#### function looseGame
     * call reset game
     * present loosing message
 
-####function animateCharacter
+#### function animateCharacter
     * animate the character up according to the wrongGuesses array
 
-####function winGame
+#### function winGame
     * call reset game
     * present winning message
 
-####function completeWord
+#### function completeWord
     * remove currentWord from wordBank
     * check if the wordBank is empty
         * if empty,
