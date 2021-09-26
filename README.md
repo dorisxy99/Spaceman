@@ -1,8 +1,6 @@
-This is my Spaceman project
+# No Mans Space - an intergalatic word guessing game
 
-☐ <Your game's title>: A description of your game. Background info of the game is a nice touch.
-
-☐ Screenshot(s): Images of your actual game.
+☐ Screenshots
 
 ## Wireframe
 
