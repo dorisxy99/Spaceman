@@ -1,12 +1,12 @@
 # No Man Space Game
 
 ## Define Constants and Variables
-#### Define required constants
+### Define required constants
 
     * const_wrongGuessLimit (No. of total wrong guesses before you lose the game, 6 or 7)
     * const_initialWordBank
 
-#### Define required variables used to track the state of the game
+### Define required variables used to track the state of the game
 
     * let _currentWord (selected from the bank randomly)
     * let_correctGuesses (correct guessed letter)
@@ -16,7 +16,7 @@
 
 
 
-#### Store elements on the page that will be accessed in code more than once in variables to make code more concise, readable and performant
+### Store elements on the page that will be accessed in code more than once in variables to make code more concise, readable and performant
 
     * the form for useer input
     * reset button
@@ -26,7 +26,7 @@
     * the wrong guesses list (message)
 
 ## Game Logic
-#### Upon loading the app should
+### Upon loading the app should
 
     * initialize all the variables
     * initialize the event handlers
@@ -35,7 +35,7 @@
     * * select the word from wordBank based on the difficulty rating (3 + winCount)
     * render total letter slots on the page 
 
-#### User submits their guess using the form submit event handler
+### User submits their guess using the form submit event handler
 
     * search the current word for the submitted guessed letter (use js to include)
 
@@ -57,7 +57,7 @@
                 
 ## Function definitions:
 
-#### function checkGuess
+### function checkGuess
 
     * check if current word contains letter
     * if yes,
@@ -67,22 +67,23 @@
         * add letter to wrongGuesses
         * call render
 
-#### function chooseWord 
+### function chooseWord 
     * select difficulty rating by using winCount
     * filter wordBank by the rating
     * select random word from what's left
     * set the current word variable
     * call render function
 
-#### function resetGame
+### function resetGame
     * clear wrongGuesses
-    * clear wordBank
+    * clear wordBank ->
     * set wordBank to inital wordBank
     * clear correctGuesses
     * clear currentWord
+    * set winCount to Zero
     * call render function
 
-#### function render
+### function render
     * ALLLLLLLLLLLL the elements ******************* double check
     * the form for useer input
     * reset button
@@ -92,18 +93,18 @@
     * the wrong guesses list (message)
     * call animateCharacter
 
-#### function looseGame
+### function looseGame
     * call reset game
     * present loosing message
 
-#### function animateCharacter
+### function animateCharacter
     * animate the character up according to the wrongGuesses array
 
-#### function winGame
+### function winGame
     * call reset game
     * present winning message
 
-#### function completeWord
+### function completeWord
     * remove currentWord from wordBank
     * check if the wordBank is empty
         * if empty,
