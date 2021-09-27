@@ -1,11 +1,6 @@
 /*----- constants -----*/
 const wrongGuessLimit = 6;
-const initialWordBank = ["Space", "Earth", "Solar", "Jupiter", "Mars", 
-                        "moon", "Neptune", "Mercury", "Pluto", "Saturn", 
-                        "Venus", "asteroid", "astronaut", "comet", "star", 
-                        "constellation", "space", "planet", "galaxy", "lunar", 
-                        "solar", "orbit", "sun", "universe", "sky", 
-                        "telescope", "eclipse", "zodiac", "gravity", "Uranus", "ray", "air"];
+const initialWordBank = ["Space", "Earth", "Solar", "Jupiter", "Mars","moon", "Neptune", "Mercury", "Pluto", "Saturn", "Venus", "asteroid", "astronaut", "comet", "star","constellation", "space", "planet", "galaxy", "lunar", "solar", "orbit", "sun", "universe", "sky", "telescope", "eclipse", "zodiac", "gravity", "Uranus", "ray", "air"];
 
 /*----- app's state (variables) -----*/
 
@@ -32,6 +27,7 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
     let guess = event.target.elements['guess'].value.toLowerCase();
     checkGuess(guess);
+    event.target.elements['guess'].value = "";
     // handle the form data
 });
 
@@ -44,10 +40,7 @@ chooseWord();
 //*****************/
 //Function chooseWord
 //Desc: 
-//Args: 
-//Returns: 
 //*****************/
-
 function chooseWord() {
     let difficulty = 3 + winCount;
     let filteredWords = wordBank.filter(word => word.length == difficulty);
@@ -59,8 +52,7 @@ function chooseWord() {
 
 //*****************/
 //Function checkGuess
-//Args: String
-//Returns: Boolean
+//Desc: 
 //*****************/
 function checkGuess(guess) {
     //check to see if the guess is already use
@@ -82,8 +74,9 @@ function checkGuess(guess) {
     let lettersUnique = letters.filter((letter, i) => letters.indexOf(letter) === i);
 
     //check if the correct guesses equal to the unique letters to determine if the word is complete
-    if(correctGuesses.length === lettersUnique) {
+    if(correctGuesses.length === lettersUnique.length) {
        completeWord();
+       return;
     }
 
     //
@@ -92,8 +85,7 @@ function checkGuess(guess) {
 
 //*****************/
 //Function createLetterBox
-//Args: String
-//Returns: NA
+//Desc: 
 //*****************/
 function createLetterBox(letter) {
     let letterItem = document.createElement("div");
@@ -112,8 +104,6 @@ function createLetterBox(letter) {
 //*****************/
 //Function 
 //Desc: 
-//Args
-//Returns: 
 //*****************/
 function render() {
     hintMsg.innerHTML = `The word has ${currentWord.length} letters.`;
@@ -129,27 +119,11 @@ function render() {
     }
 }
 
-
-//*****************/
-//Function looseGame
-//Desc: 
-//Args:
-//Returns: 
-//*****************/
-
-function looseGame() {
-
-}
-
-
 //*****************/
 //Function animatedCharacter
 //Desc: 
-//Args:
-//Returns: 
 //*****************/
-
-function animatedChracter() {
+function animatedCharacter() {
 
 }
 
@@ -157,32 +131,36 @@ function animatedChracter() {
 //*****************/
 //Function winGame
 //Desc: 
-//Args: 
-//Returns: 
 //*****************/
-
 function winGame() {
+
+}
+
+//*****************/
+//Function looseGame
+//Desc: 
+//*****************/
+function looseGame() {
 
 }
 
 //*****************/
 //Function completeWord
 //Desc: 
-//Args: 
-//Returns: 
 //*****************/
-
 function completeWord() {
-
+    //remove currentWord from wordBank
+    wordBank = wordBank.filter(word => word !== currentWord);
+    wrongGuesses = [];
+    correctGuesses = [];
+    winCount = ++winCount;
+    chooseWord();
 }
 
 //*****************/
 //Function 
 //Desc: 
-//Args: 
-//Returns: 
 //*****************/
-
 function resetGame() {
     currentWord = undefined;
     correctGuesses = [];
