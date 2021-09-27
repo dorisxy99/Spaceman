@@ -1,40 +1,129 @@
 body{
     padding: 60px;
-    background-color: #f2f2f2;
+    background-color: black;
 }
+
+h1, h2, h3, h4, p, input{
+    text-align: left;
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+h1{
+    color: #61FF16;
+    font-size: 50px;
+}
+h2{
+    color: #B6B6B6;
+    font-size: 20px;
+    line-height: 1.4;
+    width: 75%;
+}
+
 .main{
     display: flex;
+    align-items: center;
     flex-flow: wrap;
-    background-color: white;
+    background-color: #1E1E1E;
 }
 
 .flex-50{
     flex: 0 0 50%;
-
+    max-width: 50%;
 }
 
-h1 {
+.inner{
+    text-align: center;
+    padding: 50px;
 }
 
-.letters-cont, .input-cont{
+.letters-cont{
     margin: auto;
+    display: flex;
+}
+.input-cont{
     padding-top: 30px;
+
 }
 
 .letter-box {
-    border-bottom: 2px solid black;
-    padding: 15px;
+    padding: 10px;
     font-size: 35px;
-    display: inline-flex;
-    margin-right: 5px;
-}
-
-.letter-box p{
-    margin: 0;
+    margin-right: 10px;
+    height: 50px;
+    width: 50px;
+    background: white;
+    text-align: center;
+    font-family: 'Press Start 2P', sans-serif;
 }
 
 .spaceman-img{
     margin: auto;
-    width: 250px;
+    width: 75%;
+    animation: float 6s ease-in-out infinite;
+}
 
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+.game-cont{
+    text-align: left;
+    margin-top: 60px;
+}
+
+#hint-msg{
+    color: white;
+}
+
+#remaining-msg{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+#wrong-msg{
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+#form-input{
+    background: none;
+    box-shadow: none;
+    border: 2px solid #61ff16;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #61FF16;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    outline: none;
+    max-width: 249px;
+}
+
+#try{
+    padding: 15px 30px;
+    border-radius: 45px;
+    font-size: 15px;
+    color: black;
+    margin-right: 15px;
+    outline: none;
+    max-width: 249px;
+    border: none;
+    background: #61ff16;
+    cursor: pointer;
+}
+
+#reset-btn{
+    cursor: pointer;
+    color: #B6B6B6;
+    font-size: 18px;
 }

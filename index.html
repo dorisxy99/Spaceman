@@ -6,39 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spaceman</title>
     <script defer src="js/main.js"></script>
+    
+    <!-- adding google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 
     <link href="css/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="main">
         <div class="flex-50">
-            <h1>No Mans Space</h1>
-            <p>Welcome to No Mans Space. Guess the correct galactic words to save your space colony from drifting away.</p>
-            <div>
-                <p id="hint-msg">The word has 5 letters.</p>
-
-                <div id="letters" class="letters-cont"></div>
-                
-                <div class="input-cont">
-                
-                    <!-- using form -->
-                    <div class="input-box">
-                        <form id="guessForm">
-                            <input maxlength="1" type="text" name="guess" placeholder="Guess a letter...">
-                            <input type="submit" value="Try">	
-                        </form>
+            <div class="inner">
+                <h1>No Mans Space</h1>
+                <h2>Welcome to No Mans Space. Guess the correct galactic words to save your space colony from drifting away.</h2>
+                <div class="game-cont">
+                    <p id="hint-msg">The word has 5 letters.</p>
+    
+                    <div id="letters" class="letters-cont"></div>
+                    
+                    <div class="input-cont">
+                    
+                        <!-- using form -->
+                        <div class="input-box">
+                            <form id="guessForm">
+                                <input id="form-input" maxlength="1" type="text" name="guess" placeholder="Guess a letter...">
+                                <input id="try" type="submit" value="Try">	
+                            </form>
+                        </div>
                     </div>
+                 
+                    <a id="reset-btn"> <img src="img/refresh.svg"> reset game</a>
+    
                 </div>
-             
-                <a id="reset-btn">reset game</a>
-
             </div>
+        
         </div>
 
         <div class="flex-50">
-            <img class="spaceman-img" src="img/spaceman.png">
-            <p id="remaining-msg">You have 6 guesses left!</p>
-            <p id="wrong-msg">Wrong guesses:</p>
+            <div class="inner">
+                <img class="spaceman-img" src="img/spaceman.png">
+                <p id="remaining-msg">You have 6 guesses left!</p>
+                <p id="wrong-msg">Wrong guesses:</p>
+            </div>
         </div>
 
 

@@ -31,6 +31,10 @@ form.addEventListener('submit', (event) => {
     // handle the form data
 });
 
+resetBtn.addEventListener('click',(event) => {
+    resetGame();
+})
+
 
 /*----- start the app -----*/
 chooseWord();
