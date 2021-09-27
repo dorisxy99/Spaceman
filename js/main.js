@@ -38,7 +38,6 @@ form.addEventListener('submit', (event) => {
 
 /*----- start the app -----*/
 chooseWord();
-render();
 
 /*----- functions -----*/
 
@@ -54,7 +53,7 @@ function chooseWord() {
     let filteredWords = wordBank.filter(word => word.length == difficulty);
     currentWord = filteredWords[Math.floor(Math.random()*filteredWords.length)].toLowerCase();
     console.log(currentWord)
-    //call render
+    render();
 }
 
 
@@ -64,7 +63,20 @@ function chooseWord() {
 //Returns: Boolean
 //*****************/
 function checkGuess(guess) {
-    console.log(guess)
+    //check to see if the guess is already use
+    if(correctGuesses.includes(guess) || wrongGuesses.includes(guess)){
+        console.log("You've already guessed this letter");
+        render();
+        return;
+    } 
+
+    if(currentWord.includes(guess)) {
+        correctGuesses.push(guess)
+    } else{
+        wrongGuesses.push(guess)
+    } 
+    render();
+   
 }
 
 //*****************/
@@ -77,9 +89,11 @@ function createLetterBox(letter) {
     letterItem.classList.add("letter-box");
    
     //check if the letter is contained in the correct guesses
-
-    // let textnode = document.createTextNode(letter);
-    // letterItem.appendChild(textnode);
+    if(correctGuesses.includes(letter)){
+        let textnode = document.createTextNode(letter);
+        letterItem.appendChild(textnode);
+    }
+    
 
     lettersBox.appendChild(letterItem);
 }
@@ -95,9 +109,12 @@ function render() {
     remainingMsg.innerHTML = `You have ${wrongGuessLimit - wrongGuesses.length} guesses left!`;
     wrongMsg.innerHTML = `Wrong guesses ${wrongGuesses.toString()}`;
 
+    //hacky. change later
+    lettersBox.innerHTML = "";
+
     let letters = currentWord.split("");
     for (i in letters) {
-        createLetterBox(letters[i])
+        createLetterBox(letters[i]);
     }
 }
 
