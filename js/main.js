@@ -92,7 +92,7 @@ function checkGuess(guess) {
 
     //check if the correct guesses equal to the unique letters to determine if the word is complete
     if(correctGuesses.length === lettersUnique.length) {
-        winLostMsg.innerHTML = "Congrats!! You won!!"
+        //winLostMsg.innerHTML = "Congrats!! You won!!"
         completeWord();
     } else {
         winLostMsg.innerHTML = "&nbsp;";
@@ -103,7 +103,6 @@ function checkGuess(guess) {
 
 //*****************/
 //Function createLetterBox
-//Desc: 
 //*****************/
 function createLetterBox(letter) {
     let letterItem = document.createElement("div");
@@ -119,8 +118,7 @@ function createLetterBox(letter) {
 }
 
 //*****************/
-//Function 
-//Desc: 
+//Function render
 //*****************/
 function render() {
     hintMsg.innerHTML = `The word has ${currentWord.length} letters.`;
@@ -136,11 +134,8 @@ function render() {
     }
 }
 
-//let guess === chooseWord
-
 //*****************/
 //Function animatedCharacter
-//Desc: 
 //*****************/
 function animatedCharacter() {
 
@@ -149,7 +144,6 @@ function animatedCharacter() {
 
 //*****************/
 //Function winGame
-//Desc: 
 //*****************/
 function winGame() {
     console.log("Congrats! You win!!");
@@ -157,17 +151,14 @@ function winGame() {
 
 //*****************/
 //Function looseGame
-//Desc: 
 //*****************/
-//No need to use this:
-//function looseGame() {
-  //  console.log("You sent me to the alien ship!!");
-    //resetGame();
-//}
+function looseGame() {
+    console.log("You sent me to the alien ship!!");
+    resetGame();
+}
 
 //*****************/
 //Function completeWord
-//Desc: 
 //*****************/
 function completeWord() {
     //remove currentWord from wordBank
@@ -179,8 +170,7 @@ function completeWord() {
 }
 
 //*****************/
-//Function 
-//Desc: 
+//Function resetGame 
 //*****************/
 function resetGame() {
     correctGuesses = [];

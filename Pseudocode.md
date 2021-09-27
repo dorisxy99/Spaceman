@@ -3,14 +3,14 @@
 ## Define Constants and Variables
 ### Define required constants
 
-    * const_wrongGuessLimit (No. of total wrong guesses before you lose the game, 6 or 7)
+    * const_wrongGuesssedLetterLimit (No. of total wrong guesses before you lose the game, 6)
     * const_initialWordBank
 
 ### Define required variables used to track the state of the game
 
     * let _currentWord (selected from the bank randomly)
-    * let_correctGuesses (correct guessed letter)
-    * let_wrongGuesses (wrong gusseed letter)
+    * let_correctGuessesLetter (correct guessed letter)
+    * let_wrongGuessesLetter (wrong gusseed letter)
     * let_wordBank (I decided to use the word bank as a varible becuase it is mutable. We can remove the words that are already use, so that the player doesn't get the same word twice. And will eventually finish the whole game!!!!)
     * let_winCount (a number of how many words the player guesses correctly)
 
