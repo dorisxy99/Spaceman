@@ -70,13 +70,24 @@ function checkGuess(guess) {
         return;
     } 
 
+    //check to see if the guessed letter is in the curren chosen word
     if(currentWord.includes(guess)) {
         correctGuesses.push(guess)
     } else{
         wrongGuesses.push(guess)
     } 
+
+    //turn current word into array and de-dupe the letters to count the unique letters in the word
+    let letters = currentWord.split("");
+    let lettersUnique = letters.filter((letter, i) => letters.indexOf(letter) === i);
+
+    //check if the correct guesses equal to the unique letters to determine if the word is complete
+    if(correctGuesses.length === lettersUnique) {
+       completeWord();
+    }
+
+    //
     render();
-   
 }
 
 //*****************/
