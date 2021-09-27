@@ -1,6 +1,6 @@
 /*----- constants -----*/
 const wrongGuessLimit = 6;
-const initialWordBank = ["Space", "Earth", "Solar", "Jupiter", "Mars","moon", "Neptune", "Mercury", "Pluto", "Saturn", "Venus", "asteroid", "astronaut", "comet", "star","constellation", "space", "planet", "galaxy", "lunar", "solar", "orbit", "sun", "universe", "sky", "telescope", "eclipse", "zodiac", "gravity", "Uranus", "ray", "air"];
+const initialWordBank = ["Space", "Earth", "Solar", "Jupiter", "Mars","moon", "Neptune", "Mercury", "Pluto", "Saturn", "Venus", "asteroid", "astronaut", "comet", "star","constellation", "space", "planet", "galaxy", "lunar", "solar", "orbit", "sun", "universe", "sky", "telescope", "eclipse", "zodiac", "gravity", "Uranus", "ray", "air", "spacewalks", "spacecraft", "spacefaring", "spacetravel", "spaceflights", "spacewalking"];
 
 /*----- app's state (variables) -----*/
 
@@ -43,7 +43,13 @@ chooseWord();
 //*****************/
 function chooseWord() {
     let difficulty = 3 + winCount;
-    let filteredWords = wordBank.filter(word => word.length == difficulty);
+    let filteredWords = wordBank.filter(word => word.length === difficulty);
+
+    if(filteredWords.length === 0){
+        winGame();
+        return;
+    }
+    
     currentWord = filteredWords[Math.floor(Math.random()*filteredWords.length)].toLowerCase();
     console.log(currentWord)
     render();
@@ -76,7 +82,6 @@ function checkGuess(guess) {
     //check if the correct guesses equal to the unique letters to determine if the word is complete
     if(correctGuesses.length === lettersUnique.length) {
        completeWord();
-       return;
     }
 
     //
@@ -96,7 +101,6 @@ function createLetterBox(letter) {
         let textnode = document.createTextNode(letter);
         letterItem.appendChild(textnode);
     }
-    
 
     lettersBox.appendChild(letterItem);
 }
@@ -133,7 +137,7 @@ function animatedCharacter() {
 //Desc: 
 //*****************/
 function winGame() {
-
+    console.log("Congrats! You win!!");
 }
 
 //*****************/
