@@ -18,6 +18,7 @@ const resetBtn = document.getElementById('reset-btn');
 const remainingMsg = document.getElementById('remaining-msg');
 const wrongMsg = document.getElementById('wrong-msg');
 const lettersBox = document.getElementById('letters');
+const winLostMsg = document.getElementById('win-lost');
 
 
 
@@ -55,7 +56,7 @@ function chooseWord() {
     }
     
     currentWord = filteredWords[Math.floor(Math.random()*filteredWords.length)].toLowerCase();
-    console.log(currentWord)
+    console.log(currentWord);
     render();
 }
 
@@ -68,20 +69,22 @@ function checkGuess(guess) {
     //check to see if the guess is already use
     if(correctGuesses.includes(guess) || wrongGuesses.includes(guess)){
         console.log("You've already guessed this letter");
-        render();
+        //double check with render, Jim suggested not to use render()***
         return;
     } 
 
     //check to see if the guessed letter is in the curren chosen word
     if(currentWord.includes(guess)) {
+        //letter to replaced the current 
         correctGuesses.push(guess)
-    } else{
+    } else {
         wrongGuesses.push(guess);
         if(wrongGuesses.length >= wrongGuessLimit) {
-            looseGame();
+            winLostMsg.innerHTML = "You sent me to the alien ship!!";
+            render();
             return;
         }
-    } 
+    }
 
     //turn current word into array and de-dupe the letters to count the unique letters in the word
     let letters = currentWord.split("");
@@ -89,12 +92,14 @@ function checkGuess(guess) {
 
     //check if the correct guesses equal to the unique letters to determine if the word is complete
     if(correctGuesses.length === lettersUnique.length) {
-       completeWord();
+        winLostMsg.innerHTML = "Congrats!! You won!!"
+        completeWord();
+    } else {
+        winLostMsg.innerHTML = "&nbsp;";
     }
-
-    //
     render();
 }
+
 
 //*****************/
 //Function createLetterBox
@@ -131,6 +136,8 @@ function render() {
     }
 }
 
+//let guess === chooseWord
+
 //*****************/
 //Function animatedCharacter
 //Desc: 
@@ -152,10 +159,11 @@ function winGame() {
 //Function looseGame
 //Desc: 
 //*****************/
-function looseGame() {
-    console.log("You sent me to the alien ship!!");
-    resetGame();
-}
+//No need to use this:
+//function looseGame() {
+  //  console.log("You sent me to the alien ship!!");
+    //resetGame();
+//}
 
 //*****************/
 //Function completeWord
