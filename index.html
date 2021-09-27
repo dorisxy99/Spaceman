@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spaceman</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script defer src="js/main.js"></script>
 
     <link href="css/main.css" rel="stylesheet" type="text/css" />
@@ -17,14 +16,8 @@
             <p>Welcome to No Mans Space. Guess the correct galactic words to save your space colony from drifting away.</p>
             <div>
                 <p id="hint-msg">The word has 5 letters.</p>
-                <div class="letters-cont">
-    
-                    <!-- this element is dynamic -->
-                    <div class="letter-box">
-                        <p></p>
-                    </div>
-                
-                </div>
+
+                <div id="letters" class="letters-cont"></div>
                 
                 <div class="input-cont">
                 

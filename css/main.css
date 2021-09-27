@@ -26,6 +26,7 @@ h1 {
     padding: 15px;
     font-size: 35px;
     display: inline-flex;
+    margin-right: 5px;
 }
 
 .letter-box p{

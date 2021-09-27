@@ -22,6 +22,7 @@ const hintMsg = document.getElementById('hint-msg');
 const resetBtn = document.getElementById('reset-btn');
 const remainingMsg = document.getElementById('remaining-msg');
 const wrongMsg = document.getElementById('wrong-msg');
+const lettersBox = document.getElementById('letters');
 
 
 
@@ -29,9 +30,8 @@ const wrongMsg = document.getElementById('wrong-msg');
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    let guess = event.target.elements['guess'].value.toLowerCase()
-    checkGuess(guess)
-    $( ".letters-cont" ).append( "<div class='letter-box'> <p>"+guess +"</p></div>" );
+    let guess = event.target.elements['guess'].value.toLowerCase();
+    checkGuess(guess);
     // handle the form data
 });
 
@@ -64,7 +64,24 @@ function chooseWord() {
 //Returns: Boolean
 //*****************/
 function checkGuess(guess) {
+    console.log(guess)
+}
 
+//*****************/
+//Function createLetterBox
+//Args: String
+//Returns: NA
+//*****************/
+function createLetterBox(letter) {
+    let letterItem = document.createElement("div");
+    letterItem.classList.add("letter-box");
+   
+    //check if the letter is contained in the correct guesses
+
+    // let textnode = document.createTextNode(letter);
+    // letterItem.appendChild(textnode);
+
+    lettersBox.appendChild(letterItem);
 }
 
 //*****************/
@@ -73,11 +90,15 @@ function checkGuess(guess) {
 //Args
 //Returns: 
 //*****************/
-
 function render() {
     hintMsg.innerHTML = `The word has ${currentWord.length} letters.`;
-    remainingMsg.innerHTML = `You have ${wrongGuessLimit - wrongGuesses.length} guesses left!`
-    wrongMsg.innerHTML = `Wrong guesses ${wrongGuesses.toString()}`
+    remainingMsg.innerHTML = `You have ${wrongGuessLimit - wrongGuesses.length} guesses left!`;
+    wrongMsg.innerHTML = `Wrong guesses ${wrongGuesses.toString()}`;
+
+    let letters = currentWord.split("");
+    for (i in letters) {
+        createLetterBox(letters[i])
+    }
 }
 
 
