@@ -72,7 +72,11 @@ function checkGuess(guess) {
     if(currentWord.includes(guess)) {
         correctGuesses.push(guess)
     } else{
-        wrongGuesses.push(guess)
+        wrongGuesses.push(guess);
+        if(wrongGuesses.length >= wrongGuessLimit) {
+            looseGame();
+            return;
+        }
     } 
 
     //turn current word into array and de-dupe the letters to count the unique letters in the word
@@ -145,7 +149,8 @@ function winGame() {
 //Desc: 
 //*****************/
 function looseGame() {
-
+    console.log("You sent me to the alien ship!!");
+    resetGame();
 }
 
 //*****************/
@@ -166,11 +171,11 @@ function completeWord() {
 //Desc: 
 //*****************/
 function resetGame() {
-    currentWord = undefined;
     correctGuesses = [];
     wrongGuesses = [];
     wordBank = initialWordBank;
     winCount = 0;
+    chooseWord();
     render();
 }
 
