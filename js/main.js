@@ -61,7 +61,7 @@ function chooseWord() {
 
 //(other samples --> 
 //for(let letter of currentWord){
-    //guessWord += letter === space '' ? '' : '_';
+//guessWord += letter === space '' ? '' : '_';
 //})
 
 //*****************/
@@ -180,5 +180,3 @@ function resetGame() {
     chooseWord();
     render();
 }
-
-//testing//
