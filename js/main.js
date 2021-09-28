@@ -5,8 +5,8 @@ const initialWordBank = ["Space", "Earth", "Solar", "Jupiter", "Mars","moon", "N
 /*----- app's state (variables) -----*/
 
 let currentWord;
-let correctGuesses = [];
-let wrongGuesses = [];
+let correctGuessesLetters = [];
+let wrongGuessesLetters = [];
 let wordBank = initialWordBank;
 let winCount = 0;
 
@@ -65,7 +65,7 @@ function chooseWord() {
 //*****************/
 function checkGuess(guess) {
     //check to see if the guess is already use
-    if(correctGuesses.includes(guess) || wrongGuesses.includes(guess)){
+    if(correctGuessesLetters.includes(guess) || wrongGuessesLetters.includes(guess)){
         console.log("You've already guessed this letter");
         //double check with render, Jim suggested not to use render()***
         return;
@@ -74,12 +74,11 @@ function checkGuess(guess) {
     //check to see if the guessed letter is in the curren chosen word
     if(currentWord.includes(guess)) {
         //letter to replaced the current 
-        correctGuesses.push(guess)
+        correctGuessesLetters.push(guess)
     } else {
-        wrongGuesses.push(guess);
-        if(wrongGuesses.length >= wrongGuessLimit) {
-            winLostMsg.innerHTML = "You sent me to the alien ship!!";
-            render();
+        wrongGuessesLetters.push(guess);
+        if(wrongGuessesLetters.length >= wrongGuessLimit) {
+            looseGame();    
             return;
         }
     }
@@ -89,13 +88,12 @@ function checkGuess(guess) {
     let lettersUnique = letters.filter((letter, i) => letters.indexOf(letter) === i);
 
     //check if the correct guesses equal to the unique letters to determine if the word is complete
-    if(correctGuesses.length === lettersUnique.length) {
+    if(correctGuessesLetters.length === lettersUnique.length) {
         //winLostMsg.innerHTML = "Congrats!! You won!!"
         completeWord();
-    } else {
-        winLostMsg.innerHTML = "&nbsp;";
     }
     render();
+
 }
 
 
@@ -107,7 +105,7 @@ function createLetterBox(letter) {
     letterItem.classList.add("letter-box");
    
     //check if the letter is contained in the correct guesses
-    if(correctGuesses.includes(letter)){
+    if(correctGuessesLetters.includes(letter)){
         let textnode = document.createTextNode(letter);
         letterItem.appendChild(textnode);
     }
@@ -120,8 +118,8 @@ function createLetterBox(letter) {
 //*****************/
 function render() {
     hintMsg.innerHTML = `The word has ${currentWord.length} letters.`;
-    remainingMsg.innerHTML = `You have ${wrongGuessLimit - wrongGuesses.length} guesses left!`;
-    wrongMsg.innerHTML = `Wrong guesses ${wrongGuesses.toString()}`;
+    remainingMsg.innerHTML = `You have ${wrongGuessLimit - wrongGuessesLetters.length} guesses left!`;
+    wrongMsg.innerHTML = `Wrong guesses ${wrongGuessesLetters.toString()}`;
 
     //hacky. change later (reset the fill)
     lettersBox.innerHTML = "";
@@ -150,6 +148,7 @@ function winGame() {
 //*****************/
 //Function looseGame
 //*****************/
+//seperating the looseGame into its own function that it is reusable
 function looseGame() {
     console.log("You sent me to the alien ship!!");
     resetGame();
@@ -161,8 +160,8 @@ function looseGame() {
 function completeWord() {
     //remove currentWord from wordBank
     wordBank = wordBank.filter(word => word !== currentWord);
-    wrongGuesses = [];
-    correctGuesses = [];
+    wrongGuessesLetters = [];
+    correctGuessesLetters = [];
     winCount = ++winCount;
     chooseWord();
 }
@@ -171,8 +170,8 @@ function completeWord() {
 //Function resetGame 
 //*****************/
 function resetGame() {
-    correctGuesses = [];
-    wrongGuesses = [];
+    correctGuessesLetters = [];
+    wrongGuessesLetters = [];
     wordBank = initialWordBank;
     winCount = 0;
     chooseWord();
