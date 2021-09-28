@@ -122,7 +122,7 @@ function createLetterBox(letter) {
 function render() {
     hintMsg.innerHTML = `The word has ${currentWord.length} letters.`;
     remainingMsg.innerHTML = `You have ${wrongGuessesLimit - wrongGuessesLetters.length} guesses left!`;
-    wrongMsg.innerHTML = `Wrong guesses ${wrongGuessesLetters.toString()}`;
+    wrongMsg.innerHTML = `Wrong guesses: ${wrongGuessesLetters.toString()}`;
 
     //hacky. change later (reset the fill)
     lettersBox.innerHTML = "";

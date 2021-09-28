@@ -13,12 +13,20 @@ h1{
     color: #61FF16;
     font-size: 50px;
 }
+
 h2{
     color: #B6B6B6;
     font-size: 20px;
     line-height: 1.4;
     width: 100%;
 }
+h3{
+    color: #B6B6B6;
+    font-size: 20px;
+    line-height: 1.4;
+    width: 100%;
+}
+
 
 .main{
     display: flex;
