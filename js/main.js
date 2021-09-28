@@ -1,5 +1,5 @@
 /*----- constants -----*/
-const wrongGuessLimit = 6;
+const wrongGuessesLimit = 6;
 const initialWordBank = ["Space", "Earth", "Solar", "Jupiter", "Mars","moon", "Neptune", "Mercury", "Pluto", "Saturn", "Venus", "asteroid", "astronaut", "comet", "star","constellation", "space", "planet", "galaxy", "lunar", "solar", "orbit", "sun", "universe", "sky", "telescope", "eclipse", "zodiac", "gravity", "Uranus", "ray", "air", "spacewalks", "spacecraft", "spacefaring", "spacetravel", "spaceflights", "spacewalking"];
 
 /*----- app's state (variables) -----*/
@@ -59,6 +59,10 @@ function chooseWord() {
     render();
 }
 
+//(other samples --> 
+//for(let letter of currentWord){
+    //guessWord += letter === space '' ? '' : '_';
+//})
 
 //*****************/
 //Function checkGuess
@@ -67,7 +71,6 @@ function checkGuess(guess) {
     //check to see if the guess is already use
     if(correctGuessesLetters.includes(guess) || wrongGuessesLetters.includes(guess)){
         console.log("You've already guessed this letter");
-        //double check with render, Jim suggested not to use render()***
         return;
     } 
 
@@ -77,7 +80,7 @@ function checkGuess(guess) {
         correctGuessesLetters.push(guess)
     } else {
         wrongGuessesLetters.push(guess);
-        if(wrongGuessesLetters.length >= wrongGuessLimit) {
+        if(wrongGuessesLetters.length >= wrongGuessesLimit) {
             looseGame();    
             return;
         }
@@ -118,7 +121,7 @@ function createLetterBox(letter) {
 //*****************/
 function render() {
     hintMsg.innerHTML = `The word has ${currentWord.length} letters.`;
-    remainingMsg.innerHTML = `You have ${wrongGuessLimit - wrongGuessesLetters.length} guesses left!`;
+    remainingMsg.innerHTML = `You have ${wrongGuessesLimit - wrongGuessesLetters.length} guesses left!`;
     wrongMsg.innerHTML = `Wrong guesses ${wrongGuessesLetters.toString()}`;
 
     //hacky. change later (reset the fill)
