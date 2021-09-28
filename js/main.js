@@ -44,7 +44,6 @@ chooseWord();
 
 //*****************/
 //Function chooseWord
-//Desc: 
 //*****************/
 function chooseWord() {
     let difficulty = 3 + winCount;
@@ -63,7 +62,6 @@ function chooseWord() {
 
 //*****************/
 //Function checkGuess
-//Desc: 
 //*****************/
 function checkGuess(guess) {
     //check to see if the guess is already use
@@ -125,7 +123,7 @@ function render() {
     remainingMsg.innerHTML = `You have ${wrongGuessLimit - wrongGuesses.length} guesses left!`;
     wrongMsg.innerHTML = `Wrong guesses ${wrongGuesses.toString()}`;
 
-    //hacky. change later
+    //hacky. change later (reset the fill)
     lettersBox.innerHTML = "";
 
     let letters = currentWord.split("");
