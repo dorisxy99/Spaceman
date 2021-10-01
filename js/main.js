@@ -81,7 +81,6 @@ function checkGuess(guess) {
     } else {
         wrongGuessesLetters.push(guess);
         if(wrongGuessesLetters.length >= wrongGuessesLimit) {
-            winLostMsg.innerHTML = "You sent me to the alien ship!!";
             looseGame();    
             return;
         }
@@ -93,7 +92,6 @@ function checkGuess(guess) {
 
     //check if the correct guesses equal to the unique letters to determine if the word is complete
     if(correctGuessesLetters.length === lettersUnique.length) {
-        winLostMsg.innerHTML = "Congrats!! You won!!"
         completeWord();
     }
     render();
@@ -146,6 +144,7 @@ function render() {
 //*****************/
 function winGame() {
     console.log("Congrats! You win!!");
+    winLostMsg.innerHTML = "Congrats!! You saved me!!";
 }
 
 //*****************/
@@ -154,6 +153,7 @@ function winGame() {
 //seperating the looseGame into its own function that it is reusable
 function looseGame() {
     console.log("You sent me to the alien ship!!");
+    winLostMsg.innerHTML = "You sent me to the alien ship!!";
     resetGame();
 }
 
