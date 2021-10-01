@@ -145,21 +145,17 @@ h3{
     background-repeat: no-repeat;
 }
 
-.spaceman-img {
-	pointer-events: none;
-}
-
-.spaceman-img {
+/* /* .spaceman-img {
 /* Adjust animation duration to change the element’s speed */
-        animation: fly 50s linear infinite;
-        pointer-events: none !important;
-	top: 0;
-	left: 0;
-	transform: translateX(-120%) translateY(-120%) rotateZ(0);
-	position: fixed;
-	animation-delay: 1s;
-	z-index: 999999;
-}
+        /* animation: fly 50s linear infinite;
+        pointer-events: none !important; */
+        
+	/* top: 0; */
+	/* left: 0; */
+	/* transform: translateX(-120%) translateY(-120%) rotateZ(0); */
+	/* position: fixed; */
+	/* animation-delay: 1s; */
+	/* z-index: 999999;  */
 
 
 /* @keyframes fly { */
