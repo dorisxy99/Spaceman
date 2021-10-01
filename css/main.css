@@ -68,21 +68,21 @@ h3{
 .spaceman-img{
     margin: auto; 
     width: 75%; 
-    /* animation: float 6s ease-in-out infinite; */
+    animation: float 6s ease-in-out infinite;
 }
 
 
-/* @keyframes float { */
-	/* 0% { */
-		/* transform: translatey(0px); */
-	/* } */
-	/* 50% { */
-		/* transform: translatey(-20px); */
-	/* } */
-	/* 100% { */
-		/* transform: translatey(0px); */
-	/* } */
-/* } */
+@keyframes float {
+	0% { 
+        transform: translatey(0px);
+    } 
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
 
 .game-cont{
     text-align: left;
@@ -162,9 +162,9 @@ h3{
 }
 
 
-@keyframes fly {
+/* @keyframes fly { */
 
-	98.001%, 0% {
+	/* 98.001%, 0% {
                 display: block;
 		transform: translateX(-200%) translateY(100vh) rotateZ(0deg)
 	}
@@ -196,4 +196,4 @@ h3{
 	95% {
 		transform: translateX(10vw) translateY(100vh) rotateZ(0deg)
 	}
-}
+} */

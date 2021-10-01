@@ -81,6 +81,7 @@ function checkGuess(guess) {
     } else {
         wrongGuessesLetters.push(guess);
         if(wrongGuessesLetters.length >= wrongGuessesLimit) {
+            winLostMsg.innerHTML = "You sent me to the alien ship!!";
             looseGame();    
             return;
         }
@@ -92,7 +93,7 @@ function checkGuess(guess) {
 
     //check if the correct guesses equal to the unique letters to determine if the word is complete
     if(correctGuessesLetters.length === lettersUnique.length) {
-        //winLostMsg.innerHTML = "Congrats!! You won!!"
+        winLostMsg.innerHTML = "Congrats!! You won!!"
         completeWord();
     }
     render();
@@ -136,9 +137,8 @@ function render() {
 //*****************/
 //Function animatedCharacter
 //*****************/
-function animatedCharacter() {
-
-}
+//function animatedCharacter() {
+//}
 
 
 //*****************/
