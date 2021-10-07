@@ -74,7 +74,7 @@ function checkGuess(guess) {
         return;
     } 
 
-    //check to see if the guessed letter is in the curren chosen word
+    //check to see if the guessed letter is in the current chosen word
     if(currentWord.includes(guess)) {
         //letter to replaced the current 
         correctGuessesLetters.push(guess)
